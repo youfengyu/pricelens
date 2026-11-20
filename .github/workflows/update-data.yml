@@ -1,0 +1,72 @@
+name: 更新价格数据
+
+on:
+  schedule:
+    # UTC 01:00 = 北京时间 09:00
+    - cron: "0 1 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: price-data-update
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      PRICE_API_URL: ${{ secrets.PRICE_API_URL }}
+      PRICE_API_TOKEN: ${{ secrets.PRICE_API_TOKEN }}
+      PRICE_CSV_URL: ${{ secrets.PRICE_CSV_URL }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci --no-audit --no-fund
+
+      - name: 拉取远端 CSV（可选）
+        run: |
+          if [ -z "$PRICE_API_URL" ] && [ -n "$PRICE_CSV_URL" ]; then
+            curl -fsSL "$PRICE_CSV_URL" -o data/real/products.csv
+            echo "已从 PRICE_CSV_URL 更新报价表"
+          fi
+
+      - name: 记录导入前快照
+        run: cp public/data/products.json /tmp/products.before.json
+
+      - name: 导入最新报价
+        run: |
+          if [ -n "$PRICE_API_URL" ]; then
+            echo "使用授权 API 导入"
+            npm run ingest -- --source http --kind products --url "$PRICE_API_URL" --token-env PRICE_API_TOKEN --seed-mode scale
+          else
+            echo "使用仓库内 CSV 导入"
+            npm run ingest -- --source csv --kind products --file data/real/products.csv --seed-mode scale
+          fi
+
+      - name: 判断价格是否变化
+        id: diff
+        run: |
+          node -e "const fs=require('fs');const strip=p=>{const o=JSON.parse(fs.readFileSync(p,'utf8'));delete o.updatedAt;return JSON.stringify(o)};process.exit(strip('/tmp/products.before.json')===strip('public/data/products.json')?0:1)" \
+            && echo "changed=false" >> "$GITHUB_OUTPUT" \
+            || echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      - name: 构建校验
+        if: steps.diff.outputs.changed == 'true'
+        run: npm run build
+
+      - name: 提交更新
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/data data/real/history.json
+          git commit -m "chore(data): 更新价格快照 $(TZ=Asia/Shanghai date +%F)"
+          git push

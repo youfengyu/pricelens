@@ -1,0 +1,275 @@
+{
+  "updatedAt": "2026-11-20 08:15",
+  "stats": {
+    "products": 4,
+    "skus": 8,
+    "crawlToday": 460,
+    "successRate": 99.1,
+    "alerts": 3,
+    "tasks": 8
+  },
+  "tasks": [
+    {
+      "name": "京东 · 商品价格",
+      "type": "商品",
+      "target": "4 个 SKU",
+      "interval": "每 2 小时",
+      "lastRun": "08:00",
+      "duration": 42,
+      "successRate": 99.2,
+      "status": "running"
+    },
+    {
+      "name": "天猫 · 商品价格",
+      "type": "商品",
+      "target": "4 个 SKU",
+      "interval": "每 2 小时",
+      "lastRun": "08:02",
+      "duration": 51,
+      "successRate": 98.6,
+      "status": "running"
+    },
+    {
+      "name": "拼多多 · 商品价格",
+      "type": "商品",
+      "target": "4 个 SKU",
+      "interval": "每 2 小时",
+      "lastRun": "08:05",
+      "duration": 37,
+      "successRate": 97.4,
+      "status": "running"
+    },
+    {
+      "name": "苏宁 · 商品价格",
+      "type": "商品",
+      "target": "1 个 SKU",
+      "interval": "每 4 小时",
+      "lastRun": "06:10",
+      "duration": 22,
+      "successRate": 100,
+      "status": "idle"
+    },
+    {
+      "name": "猫眼 · 电影票价",
+      "type": "电影票",
+      "target": "5 城 100 场次",
+      "interval": "每 1 小时",
+      "lastRun": "08:10",
+      "duration": 68,
+      "successRate": 96.8,
+      "status": "running"
+    },
+    {
+      "name": "淘票票 · 电影票价",
+      "type": "电影票",
+      "target": "5 城 100 场次",
+      "interval": "每 1 小时",
+      "lastRun": "07:12",
+      "duration": 74,
+      "successRate": 95.1,
+      "status": "warning"
+    },
+    {
+      "name": "携程 · 机票价格",
+      "type": "机票",
+      "target": "3 条航线 × 14 天",
+      "interval": "每 4 小时",
+      "lastRun": "06:20",
+      "duration": 96,
+      "successRate": 97.9,
+      "status": "idle"
+    },
+    {
+      "name": "飞猪 · 机票价格",
+      "type": "机票",
+      "target": "3 条航线 × 14 天",
+      "interval": "每 4 小时",
+      "lastRun": "07:30",
+      "duration": 88,
+      "successRate": 94.3,
+      "status": "warning"
+    }
+  ],
+  "alerts": [
+    {
+      "id": "AL-2311",
+      "level": "high",
+      "title": "苹果手机 京东价格跌破 5700",
+      "detail": "当前 ¥5,699，较 7 日均价下降 4.8%，已触达目标价",
+      "time": "08:12"
+    },
+    {
+      "id": "AL-2310",
+      "level": "medium",
+      "title": "淘票票采集连续 2 次超时",
+      "detail": "北京地区场次接口响应 > 30s，已自动降低并发至 2",
+      "time": "07:41"
+    },
+    {
+      "id": "AL-2309",
+      "level": "medium",
+      "title": "飞猪机票字段缺失率升高",
+      "detail": "退改签规则缺失 6.2%，可能为页面改版",
+      "time": "07:33"
+    },
+    {
+      "id": "AL-2308",
+      "level": "low",
+      "title": "伊利金典牛奶 拼多多补货",
+      "detail": "华东仓恢复库存，价格 ¥118",
+      "time": "06:58"
+    }
+  ],
+  "movers": [
+    {
+      "name": "伊利金典牛奶",
+      "platform": "京东",
+      "from": 28.17,
+      "to": 27.95,
+      "change": -0.78
+    },
+    {
+      "name": "华为手环 11",
+      "platform": "拼多多",
+      "from": 170.72,
+      "to": 170,
+      "change": -0.42
+    },
+    {
+      "name": "苹果手机",
+      "platform": "拼多多",
+      "from": 5013.91,
+      "to": 4999,
+      "change": -0.3
+    },
+    {
+      "name": "联想电脑",
+      "platform": "京东",
+      "from": 9816.82,
+      "to": 9799,
+      "change": -0.18
+    }
+  ],
+  "timeline": [
+    {
+      "hour": "00",
+      "success": 21,
+      "failed": 1
+    },
+    {
+      "hour": "01",
+      "success": 17,
+      "failed": 0
+    },
+    {
+      "hour": "02",
+      "success": 21,
+      "failed": 0
+    },
+    {
+      "hour": "03",
+      "success": 18,
+      "failed": 0
+    },
+    {
+      "hour": "04",
+      "success": 21,
+      "failed": 0
+    },
+    {
+      "hour": "05",
+      "success": 18,
+      "failed": 0
+    },
+    {
+      "hour": "06",
+      "success": 19,
+      "failed": 0
+    },
+    {
+      "hour": "07",
+      "success": 19,
+      "failed": 0
+    },
+    {
+      "hour": "08",
+      "success": 20,
+      "failed": 0
+    },
+    {
+      "hour": "09",
+      "success": 21,
+      "failed": 0
+    },
+    {
+      "hour": "10",
+      "success": 16,
+      "failed": 1
+    },
+    {
+      "hour": "11",
+      "success": 17,
+      "failed": 1
+    },
+    {
+      "hour": "12",
+      "success": 17,
+      "failed": 0
+    },
+    {
+      "hour": "13",
+      "success": 18,
+      "failed": 0
+    },
+    {
+      "hour": "14",
+      "success": 21,
+      "failed": 0
+    },
+    {
+      "hour": "15",
+      "success": 21,
+      "failed": 0
+    },
+    {
+      "hour": "16",
+      "success": 22,
+      "failed": 0
+    },
+    {
+      "hour": "17",
+      "success": 17,
+      "failed": 0
+    },
+    {
+      "hour": "18",
+      "success": 19,
+      "failed": 1
+    },
+    {
+      "hour": "19",
+      "success": 17,
+      "failed": 0
+    },
+    {
+      "hour": "20",
+      "success": 21,
+      "failed": 0
+    },
+    {
+      "hour": "21",
+      "success": 19,
+      "failed": 0
+    },
+    {
+      "hour": "22",
+      "success": 20,
+      "failed": 0
+    },
+    {
+      "hour": "23",
+      "success": 20,
+      "failed": 0
+    }
+  ]
+}

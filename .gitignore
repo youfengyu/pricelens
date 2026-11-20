@@ -1,0 +1,14 @@
+node_modules/
+dist/
+__pycache__/
+*.pyc
+data/*
+!data/real/
+data/real/*
+!data/real/products.csv
+!data/real/history.json
+.shots/
+*.log
+.env
+.env.*
+.DS_Store
