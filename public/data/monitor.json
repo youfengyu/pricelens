@@ -122,32 +122,32 @@
   ],
   "movers": [
     {
-      "name": "伊利金典牛奶",
-      "platform": "京东",
-      "from": 28.17,
-      "to": 27.95,
-      "change": -0.78
-    },
-    {
       "name": "华为手环 11",
       "platform": "拼多多",
-      "from": 170.72,
+      "from": 170,
       "to": 170,
-      "change": -0.42
+      "change": 0
     },
     {
-      "name": "苹果手机",
-      "platform": "拼多多",
-      "from": 5013.91,
-      "to": 4999,
-      "change": -0.3
+      "name": "伊利金典牛奶",
+      "platform": "京东",
+      "from": 27.95,
+      "to": 27.95,
+      "change": 0
     },
     {
       "name": "联想电脑",
       "platform": "京东",
-      "from": 9816.82,
+      "from": 9799,
       "to": 9799,
-      "change": -0.18
+      "change": 0
+    },
+    {
+      "name": "苹果手机",
+      "platform": "拼多多",
+      "from": 4999,
+      "to": 4999,
+      "change": 0
     }
   ],
   "timeline": [
